@@ -2,7 +2,7 @@
 
   <div class="home">
     
-    <p>Essa á home do catálogo de curta e média.</p>
+    <p>Essa á home...</p>
 
   </div>
 

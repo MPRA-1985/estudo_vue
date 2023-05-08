@@ -1,24 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import CurtaView from '../views/CurtaView.vue'
 
 const routes = [
 
-  
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
+    name: 'curta-template',
+    component: CurtaView,
     children: [
+
+      { 
+        path: '', 
+        name: 'home', 
+        component: () => import('../views/HomeView.vue') 
+      },
+
       {
         path: '/:tipo/:modalidade',
         name: 'curso',
         props: true,
         component: () => import('../views/CursoView.vue')
       }
+
     ]
+
   }
-
-
+  
 ]
 
 const router = createRouter({

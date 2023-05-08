@@ -1,12 +1,18 @@
 <template>
+
     <div>
+
       <h1>{{ tipo }} - {{ modalidade }}</h1>
       <!-- conteúdo do curso aqui -->
+
     </div>
-  </template>
+    
+</template>
   
-  <script>
+<script>
+
   export default {
     props: ['tipo', 'modalidade']
   };
-  </script>
+
+</script>
