@@ -10,7 +10,12 @@
   import MenuComponent from '@/components/MenuComponent.vue'
 
   export default {
-    components: { MenuComponent }
+    components: { MenuComponent },
+
+    created() {
+      this.$store.dispatch('loadDataCurtaMedia')
+    }
+
   }
 
 </script>

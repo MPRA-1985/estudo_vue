@@ -1,8 +1,8 @@
 <template>
-    
+
     <div id="container-menu">
 
-        <div id="menu">
+        <div id="menu" class="container mx-auto flex justify-between items-center">
 
             <div id="campo_busca">
                 <span>Pesquisar</span>
@@ -10,7 +10,7 @@
 
             <nav>
 
-                <ul>
+                <ul class="flex gap-14">
 
                     <li>Programa</li>
 
@@ -60,51 +60,67 @@
 
 <script>
 
-export default {
+    export default {
 
-    data() {
+        data() {
 
-        return {
-            showMenu: false,
-            showMenu2: false
-        };
+            return {
+                showMenu: false,
+                showMenu2: false
+            };
+
+        }
 
     }
-
-}
 
 </script>
 
 <style scoped>
 
     #container-menu {
+        padding: 10px 30px;
+        color: #fff;
+        position: sticky;
+        top: 0;
         background-color: #004372;
     }
 
     #menu {
-        padding: 0 30px;
+        padding: 10px 0;
         color: #fff;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
     }
 
-    nav {
+    #menu li {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        transition: color .25s;
+    }
+
+    /* nav {
         display: flex;
         flex-direction: row-reverse;
-    }
+        justify-content: space-between;
+        align-items: center;
+    } */
 
     nav ul {
-        gap: 2rem;
+        /* gap: 2rem;
         align-items: center;
-        display: flex;
+        display: flex; */
         list-style: none;
     }
 
     nav ul li a {
         color: #fff;
         text-decoration: none;
+        display: block;
     }
 
     .drop_itens {
@@ -114,6 +130,16 @@ export default {
         border-radius: 4px;
         min-width: 110px;
         display: block;
+    }
+
+    #menu .drop_itens li:not(:last-child) {
+        border-bottom: 1px solid hsla(0,0%,100%,.3);
+    }
+
+    #menu .drop_itens li a {
+        outline: none;
+        padding: 8px 12px;
+        transition: background-color .25s;
     }
 
 </style>
