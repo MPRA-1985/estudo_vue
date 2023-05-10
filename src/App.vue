@@ -20,10 +20,7 @@
 
 </script>
 
-<style>
-
-  /* @import '../public/build/index.css'; */
-  
+<style>  
 
   body {
     font-size: 16px;
@@ -33,5 +30,11 @@
     margin: 0;
     line-height: inherit;
   }
+
+  section.blue-section {
+    background-color: #02538f;
+    color: #fff;
+  }
+  
 
 </style>

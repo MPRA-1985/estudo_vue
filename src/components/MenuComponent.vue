@@ -5,7 +5,7 @@
         <div id="menu" class="container mx-auto flex justify-between items-center">
 
             <div id="campo_busca">
-                <span>Pesquisar</span>
+                <input type="text" name="search" placeholder="Pesquisar" autocomplete="off">
             </div>
 
             <nav>
@@ -77,6 +77,16 @@
 
 <style scoped>
 
+    #campo_busca input {
+        width: 300px;
+        background: hsla(0,0%,100%,.2);
+        border-radius: 50px;
+        padding: 5px 14px;
+        transition: all .25s;
+        box-shadow: none;
+        outline: 2px solid transparent;
+    }
+
     #container-menu {
         padding: 10px 30px;
         color: #fff;
@@ -101,6 +111,7 @@
         text-decoration: none;
         display: block;
         transition: color .25s;
+        cursor: pointer;
     }
 
     /* nav {
@@ -140,6 +151,10 @@
         outline: none;
         padding: 8px 12px;
         transition: background-color .25s;
+    }
+
+    #menu .drop_itens li a:hover {
+        background-color: hsla(0,0%,100%,.3);
     }
 
 </style>
