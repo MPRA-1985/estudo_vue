@@ -28,18 +28,6 @@ export default createStore({
 
   actions: {
 
-    loadAll(context) {
-
-      this.state.loading = true;
-
-      context.dispatch("loadDataCurtaMedia").then(() => {
-        console.log('loadCompleted');
-      });
-
-      console.log(context);
-
-    },
-
     async loadDataCurtaMedia(context) {
       
       const url = 'https://script.google.com/macros/s/AKfycbzyipxhi79qImVaTcIriX69MzkdPDOPkxl2Xpm_qV0CtvKqgY9KXFf5NRCj1Ud8RVEJqg/exec?action=getalldata&callback=responseJson';

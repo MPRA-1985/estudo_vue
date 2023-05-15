@@ -78,7 +78,7 @@
         top: 30px;
         height: 7px;
         width: 7px;
-        background: #004372;
+        background: #b6b6b6;
         border-radius: 50%;
         position: relative;
     }
@@ -87,7 +87,7 @@
         position: absolute;
         bottom: -101px;
         font-size: 18px;
-        color: #004372;
+        color: #b6b6b6;
         letter-spacing: 5px;
         text-transform: uppercase;
     }
