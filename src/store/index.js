@@ -6,7 +6,8 @@ export default createStore({
   state: {
     
     loading: true,
-    listaCursos: null
+    listaCursos: null,
+    listaCursosPorArea: null
 
   },
 
@@ -82,7 +83,9 @@ export default createStore({
 
       }
       
-      console.log(resultado);
+      
+      this.state.listaCursosPorArea = resultado;
+      console.log(this.state.listaCursosPorArea);
 
       context.commit('isLoaded');
 
