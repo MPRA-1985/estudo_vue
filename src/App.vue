@@ -37,7 +37,7 @@
     color: #fff;
   }
 
-  #app .curta {
+  #app .curtaMedia {
       margin-top: 3em;
   }
 
@@ -54,7 +54,10 @@
       font-size: 35px;
       line-height: 50px;
       text-align: center;
-      color: #fff;
+  }
+
+  #app .blue-section h2 {
+    color: #fff;
   }
 
   #app h3 {

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="curta" >
+    <div class="curtaMedia" >
         
         <router-view></router-view>
   
@@ -15,8 +15,6 @@
 
 <style>
 
-    
-    
 
 </style>
   

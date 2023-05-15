@@ -1,12 +1,12 @@
 import { createStore } from 'vuex'
-//import axios from 'axios'
 
 
 export default createStore({
 
   state: {
     
-    loading: true
+    loading: true,
+    listaCursos: null
 
   },
 
@@ -25,6 +25,7 @@ export default createStore({
     }
 
   },
+  
 
   actions: {
 
@@ -36,15 +37,38 @@ export default createStore({
         const response = await fetch(url);
         const jsonp = await response.text(); // Converte o JSONP para string
         const jsonString = jsonp.substring( jsonp.indexOf( '(') + 1, jsonp.lastIndexOf(')' ) ); // usa o método "substring" para remover o preenchimento JSONP da string
-        const data = JSON.parse(jsonString); // converte a string tratada para JSON
-        console.log(data);
+        this.state.listaCursos = JSON.parse(jsonString); // converte a string tratada para JSON
 
-        context.commit('isLoaded');
+        console.log(this.state.listaCursos);
+
+        context.dispatch("listaCursosPorArea"); 
 
       } catch (error) {
         console.error(error);
       }
     
+    },
+
+    listaCursosPorArea (context) {
+
+      // continuar daqui para organizar os cursos por área
+
+      var arrCursosPorArea = [];
+
+      for ( var curso in this.state.listaCursos.result.cursos ) {
+
+        if ( !arrCursosPorArea.includes(this.state.listaCursos.result.cursos[curso].area) ) {
+
+          arrCursosPorArea.push( this.state.listaCursos.result.cursos[curso].area = {} );
+
+        }
+
+      }
+
+      console.log( arrCursosPorArea )
+
+      context.commit('isLoaded');
+
     }
 
   },

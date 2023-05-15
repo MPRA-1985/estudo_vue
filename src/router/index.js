@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CurtaView from '../views/CurtaView.vue'
+import CurtaMediaView from '../views/CurtaMediaView.vue'
 
 const routes = [
 
   {
     path: '/',
     name: 'curta-template',
-    component: CurtaView,
+    component: CurtaMediaView,
     children: [
 
       { 
