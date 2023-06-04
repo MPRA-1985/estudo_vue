@@ -7,7 +7,8 @@ export default createStore({
     
     loading: true,
     listaCursos: null,
-    listaCursosPorArea: null
+    listaCursosPorArea: null,
+    listaAreas: null
 
   },
 
@@ -15,6 +16,14 @@ export default createStore({
 
     getLoadingData (state) {
       return state.loading;
+    },
+
+    getCursosPorArea (state) {
+      return state.listaCursosPorArea;
+    },
+
+    getListaAreas (state) {
+      return state.listaAreas;
     }
 
   },
@@ -40,7 +49,6 @@ export default createStore({
         const jsonString = jsonp.substring( jsonp.indexOf( '(') + 1, jsonp.lastIndexOf(')' ) ); // usa o método "substring" para remover o preenchimento JSONP da string
         let listaCursos = JSON.parse(jsonString); // converte a string tratada para JSON
 
-
         this.state.listaCursos = listaCursos.result.cursos;
 
         console.log(this.state.listaCursos);
@@ -54,8 +62,6 @@ export default createStore({
     },
 
     listaCursosPorArea (context) {
-
-      // estudar o código abaixo
 
       const dados = this.state.listaCursos;
       
@@ -83,13 +89,30 @@ export default createStore({
 
       }
       
-      
       this.state.listaCursosPorArea = resultado;
       console.log(this.state.listaCursosPorArea);
 
-      context.commit('isLoaded');
+      context.dispatch("listaAreas"); 
 
+    },
+
+    listaAreas (context) {
+    
+      const dados = this.state.listaCursosPorArea;
+      this.state.listaAreas = dados.map( objeto => Object.keys(objeto)[0] );
+
+      /* const nomeAreas = dados.map( 
+        function (objeto) {
+          return Object.keys(objeto)[0];
+        }
+      ); */
+
+      console.log(this.state.listaAreas);
+      
+      context.commit('isLoaded');
+      
     }
+
 
   },
 

@@ -1,42 +1,31 @@
 <template>
 
-<fgv-loader v-if="isLoading"></fgv-loader>
+  <fgv-loader v-if="isLoading"></fgv-loader>
 
-<div class="cursos" :tipo="tipo" :modalidade="modalidade" v-else>
-  
-  <section class="mt-20 mb-20">
-
-    <div class="container mx-auto">
-
-      <h1>Cursos de {{ tipo }} duração: <span>{{ modalidade }}</span></h1>
-
-      <div class="flex">
-
-        <div class="txt_cursos w-1/2 pr-20">
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ipsum turpis, sollicitudin vel volutpat in, vestibulum eget ligula. Sed eleifend lectus eu sodales tristique. Fusce faucibus ut eros at dignissim. Proin a lacus lorem.</p>
-
-          <p>Nunc placerat libero et neque volutpat luctus. Maecenas posuere mauris vel consequat varius. Nunc est mauris, tincidunt semper velit et, auctor varius leo.</p>
-
-          <p>Fusce elementum elit in sapien elementum, eget faucibus libero auctor. Sed eu tortor ut elit maximus laoreet. Maecenas non metus ac nunc interdum vulputate. Suspendisse placerat ultrices odio, vitae placerat est. Praesent aliquam nisl mi, sed rhoncus erat fermentum non.</p>
-
-          <p>Quisque ipsum turpis, sollicitudin vel volutpat in, vestibulum eget ligula. Sed eleifend lectus eu sodales tristique.</p>
-          
-        </div>
-
-        <div class="icones_areas w-1/2 pl-20">
-
-          <h2>Escolha uma área de conhecimento</h2>  
-
-        </div>
-
-      </div>
+  <div class="cursos" :tipo="tipo" :modalidade="modalidade" v-else>
     
-    </div>
+    <section class="mt-20 mb-20">
 
-  </section>
-  
-</div>  
+      <div class="container mx-auto">
+
+        <h1>Cursos de {{ tipo }} duração: <span>{{ modalidade }}</span></h1>
+
+        <div class="flex gap-8">
+
+          <h2>Área de conhecimento:</h2>
+
+          <select name="" id="" v-model="areaSelecionada">
+            <option value="Todas">Todas</option>
+            <option v-for="area in listaAreas" :key="area" value="area">{{ area }}</option>
+          </select>
+
+        </div>
+      
+      </div>
+
+    </section>
+    
+  </div>  
     
 </template>
   
@@ -50,8 +39,20 @@
 
     computed: {
 
+      listaAreas() {
+        return this.$store.getters.getListaAreas; 
+      },
+
       isLoading () {
         return this.$store.getters.getLoadingData
+      }
+
+    },
+
+    data() {
+
+      return {
+        areaSelecionada: 'Todas' // Valor 'default' do select
       }
 
     },
@@ -76,17 +77,41 @@
     color: #9c64a2;
   }
 
+  .cursos h1:after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 0;
+    left: 63px;
+    top: 221px;
+    border: 3px solid transparent;
+    margin-top: 25px;
+  }
+
+  [modalidade='online'] h1:after { 
+    border-color: #bd0042;
+  }
+
+  [modalidade='presencial'] h1:after { 
+    border-color: #3bae96;
+  }
+
+  [modalidade='live'] h1:after { 
+    border-color: #9c64a2;
+  }
+
   h2 {
-    font-size: 25px;
+    font-size: 2em;
+    color: #898989;
   }
 
   p {
     margin-bottom: 20px;
   }
 
-  .txt_cursos {
-    border-right: 1px dashed #ccc;
-    text-align: justify;
+  select {
+    background: #f1f1f1;
+    padding: 14px 13px;
   }
 
 </style>
