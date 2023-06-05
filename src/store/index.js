@@ -9,7 +9,6 @@ export default createStore({
     listaCursos: null,
     listaCursosPorArea: null,
     listaAreas: null
-
   },
 
   getters: {
@@ -99,18 +98,35 @@ export default createStore({
     listaAreas (context) {
     
       const dados = this.state.listaCursosPorArea;
-      this.state.listaAreas = dados.map( objeto => Object.keys(objeto)[0] );
 
-      /* const nomeAreas = dados.map( 
-        function (objeto) {
-          return Object.keys(objeto)[0];
-        }
-      ); */
+      // Percorre o array contendo os cursos filtrados por área... 
+      this.state.listaAreas = dados.map( 
+        objeto => Object.keys(objeto)[0] // ...e retorna a primeira chave de cada objeto
+      );
 
       console.log(this.state.listaAreas);
       
       context.commit('isLoaded');
       
+    },
+
+    listaCursosDeUmaArea (context, area) {
+
+      const dados = this.state.listaCursosPorArea;
+
+      let cursosAreaSelecionada = dados.filter( curso => area in curso );
+      console.log( cursosAreaSelecionada );
+
+      //let teste = [];
+      
+      for ( var i in cursosAreaSelecionada ) {
+
+        console.log( cursosAreaSelecionada[i][area]  );
+
+      } 
+
+      //console.log( teste );
+
     }
 
 

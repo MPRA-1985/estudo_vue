@@ -14,9 +14,9 @@
 
           <h2>Área de conhecimento:</h2>
 
-          <select name="" id="" v-model="areaSelecionada">
+          <select name="" id="" v-model="areaSelecionada" @change="capturarAreaSelecionada">
             <option value="Todas">Todas</option>
-            <option v-for="area in listaAreas" :key="area" value="area">{{ area }}</option>
+            <option v-for="area in listaAreas" :key="area" :value="area">{{ area }}</option>
           </select>
 
         </div>
@@ -45,6 +45,16 @@
 
       isLoading () {
         return this.$store.getters.getLoadingData
+      }
+
+    },
+
+    methods: {
+
+      capturarAreaSelecionada() {
+        const area = this.areaSelecionada; // Captura o valor selecionado
+        console.log('Área selecionada: ' + area);
+        this.$store.dispatch('listaCursosDeUmaArea', area); // Chama a action listaCursosDeUmaArea com o valor selecionado
       }
 
     },
